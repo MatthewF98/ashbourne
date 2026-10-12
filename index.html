@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BigChange Proposal – Ashbourne &amp; Vale Group</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bc-dark:#0A2240;--bc-blue:#0072CE;--bc-green:#28E289;--bc-orange:#FF6B00;
+  --bc-cyan:#00C2CB;--bc-white:#fff;--bc-gray-50:#f7f9fc;--bc-gray-100:#eef1f6;
+  --bc-gray-200:#d8dce8;--bc-gray-400:#9298b0;--bc-gray-600:#5c6180;
+  --bc-gray-800:#2d3250;--bc-radius:14px;
+  --bc-shadow:0 4px 24px rgba(0,0,0,.06);--bc-shadow-lg:0 12px 48px rgba(0,0,0,.12)
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bc-gray-50);color:var(--bc-gray-800);line-height:1.65;-webkit-font-smoothing:antialiased}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(24px);border-bottom:1px solid var(--bc-gray-100);transition:box-shadow .3s}
+.nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.07)}
+.nav-inner{max-width:1160px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo img{height:28px}
+.nav-links{display:flex;gap:14px}
+.nav-links a{font-size:11.5px;font-weight:600;color:var(--bc-gray-600);text-decoration:none;white-space:nowrap;transition:color .2s}
+.nav-links a:hover{color:var(--bc-blue)}
+
+.hero{position:relative;min-height:580px;background:linear-gradient(140deg,#061828 0%,#0A2240 40%,#0a3668 75%,#0c4a8a 100%);display:flex;align-items:center;justify-content:center;padding:150px 32px 90px;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 10% 90%,rgba(40,226,137,.12) 0%,transparent 50%),radial-gradient(ellipse at 90% 10%,rgba(0,194,203,.1) 0%,transparent 50%),radial-gradient(ellipse at 50% 50%,rgba(0,114,206,.08) 0%,transparent 70%)}
+.hero-grid{position:absolute;inset:0;opacity:.025;background-image:linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);background-size:52px 52px}
+.hero-orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none}
+.hero-orb-1{width:500px;height:500px;background:rgba(40,226,137,.06);top:-100px;right:-100px}
+.hero-orb-2{width:400px;height:400px;background:rgba(0,114,206,.08);bottom:-80px;left:-80px}
+.hero-content{position:relative;z-index:2;max-width:880px;text-align:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(40,226,137,.1);border:1px solid rgba(40,226,137,.22);border-radius:50px;padding:6px 20px;font-size:11.5px;font-weight:700;color:var(--bc-green);letter-spacing:.07em;text-transform:uppercase;margin-bottom:32px;animation:fadeInDown .6s ease-out}
+.hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--bc-green);animation:pulse-dot 2s infinite}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.7)}}
+.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(36px,4.8vw,56px);font-weight:400;color:var(--bc-white);line-height:1.1;margin-bottom:22px;animation:fadeInUp .7s ease-out .1s both}
+.hero h1 span{background:linear-gradient(135deg,var(--bc-green) 0%,var(--bc-cyan) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:17px;color:rgba(255,255,255,.55);max-width:680px;margin:0 auto 40px;line-height:1.7;animation:fadeInUp .7s ease-out .25s both}
+.hero-stat-row{display:flex;justify-content:center;gap:0;animation:fadeInUp .7s ease-out .4s both;flex-wrap:wrap;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;overflow:hidden;max-width:580px;margin:0 auto}
+.hero-stat{flex:1;padding:18px 24px;text-align:center;border-right:1px solid rgba(255,255,255,.07)}
+.hero-stat:last-child{border-right:none}
+.hero-stat .num{font-size:26px;font-weight:800;color:var(--bc-white)}
+.hero-stat .num em{font-style:normal;background:linear-gradient(135deg,var(--bc-green),var(--bc-cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-stat .lbl{font-size:10.5px;font-weight:500;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.08em;margin-top:5px}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeInDown{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:translateY(0)}}
+
+.section{max-width:1160px;margin:0 auto;padding:64px 32px}
+.section-tag{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--bc-blue);margin-bottom:12px}
+.section-tag::before{content:'';width:20px;height:2px;background:linear-gradient(90deg,var(--bc-blue),var(--bc-green));border-radius:2px}
+.section h2{font-family:'DM Serif Display',serif;font-size:clamp(28px,3.5vw,42px);font-weight:400;color:var(--bc-dark);line-height:1.18;margin-bottom:16px}
+.section .subtitle{font-size:16px;color:var(--bc-gray-600);max-width:720px;margin-bottom:48px;line-height:1.7}
+
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.card{background:var(--bc-white);border-radius:var(--bc-radius);padding:28px;border:1px solid var(--bc-gray-100);box-shadow:var(--bc-shadow);transition:transform .3s,box-shadow .3s,border-color .3s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-5px);box-shadow:var(--bc-shadow-lg);border-color:rgba(0,114,206,.12)}
+.card-icon{font-size:22px;margin-bottom:14px}
+.card h3{font-size:14.5px;font-weight:700;color:var(--bc-dark);margin-bottom:9px;line-height:1.35}
+.card p{font-size:13px;color:var(--bc-gray-600);line-height:1.65;flex:1}
+
+.system-card2{background:var(--bc-gray-50);border:1px solid var(--bc-gray-100);border-radius:var(--bc-radius);padding:22px}
+.system-card2 p{font-size:13px;color:var(--bc-gray-800);line-height:1.65;margin-top:10px}
+.s-pill{display:inline-block;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:3px 10px;border-radius:20px;margin-bottom:10px}
+.s-pill-out{background:#fff3f3;color:#b91c1c;border:1px solid #fca5a5}
+.s-pill-notneeded{background:var(--bc-gray-100);color:var(--bc-gray-600);border:1px solid var(--bc-gray-200)}
+.s-pill-replace{background:rgba(40,226,137,.1);color:#1a8a5a;border:1px solid rgba(40,226,137,.3)}
+.s-title{font-size:14px;font-weight:700;color:var(--bc-dark)}
+.system-in{border-radius:12px;padding:20px 22px;background:rgba(40,226,137,.05);border:1px solid rgba(40,226,137,.2)}
+.system-in .s-label{font-size:10px;font-weight:700;color:#1a8a5a;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px}
+.system-in p{font-size:13px;color:var(--bc-gray-800);line-height:1.65}
+
+.check{display:flex;align-items:start;gap:10px;font-size:13px;color:var(--bc-gray-800);line-height:1.55}
+.check .tick{color:var(--bc-green);font-weight:700;flex-shrink:0;margin-top:1px}
+
+.ftab{padding:9px 16px;border-radius:8px;border:1px solid var(--bc-gray-200);background:var(--bc-white);font-size:12.5px;font-weight:600;color:var(--bc-gray-600);cursor:pointer;transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif}
+.ftab:hover{border-color:var(--bc-blue);color:var(--bc-blue)}
+.ftab.active{background:var(--bc-blue);color:#fff;border-color:var(--bc-blue)}
+.feature-panel{background:var(--bc-white);border-radius:var(--bc-radius);padding:28px 32px;border:1px solid var(--bc-gray-100);box-shadow:var(--bc-shadow)}
+.feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+
+.ba-card{border-radius:var(--bc-radius);padding:28px;border:1px solid}
+.ba-bad{background:#fff3f3;border-color:#fca5a5}
+.ba-bad .ba-tag{color:#b91c1c}
+.ba-bad p{color:#7f1d1d}
+.ba-good{background:rgba(40,226,137,.05);border-color:rgba(40,226,137,.2)}
+.ba-good .ba-tag{color:#1a8a5a}
+.ba-good p{color:var(--bc-gray-800)}
+.ba-tag{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px}
+.ba-card p{font-size:13px;line-height:1.7;margin-bottom:8px}
+
+.price-box-dark{background:linear-gradient(135deg,var(--bc-dark),#0d2952);border-radius:var(--bc-radius);padding:32px}
+.price-box-main{background:var(--bc-white);border-radius:var(--bc-radius);border:2px solid var(--bc-blue);box-shadow:var(--bc-shadow-lg);overflow:hidden;display:flex;flex-direction:column}
+
+.step-card{background:var(--bc-white);border-radius:var(--bc-radius);border:1px solid var(--bc-gray-100);box-shadow:var(--bc-shadow);padding:26px}
+.step-card.active-step{border-color:var(--bc-blue);border-width:2px;box-shadow:var(--bc-shadow-lg)}
+.step-num{font-size:11px;font-weight:700;color:var(--bc-blue);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+.step-title{font-size:16px;font-weight:700;color:var(--bc-dark);margin-bottom:8px}
+.step-body{font-size:13px;color:var(--bc-gray-600);line-height:1.65}
+
+.contact-section{background:linear-gradient(135deg,var(--bc-dark),#0d2952);border-radius:var(--bc-radius);padding:48px;display:flex;align-items:center;gap:40px;color:#fff}
+.contact-avatar{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--bc-blue),var(--bc-green));display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:700;color:#fff;flex-shrink:0;letter-spacing:-.5px}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease-out,transform .7s ease-out}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.case-card{background:var(--bc-white);border-radius:var(--bc-radius);overflow:hidden;border:1px solid var(--bc-gray-100);box-shadow:var(--bc-shadow);transition:transform .3s,box-shadow .3s;display:flex;flex-direction:column;text-decoration:none;color:inherit}
+.case-card:hover{transform:translateY(-4px);box-shadow:var(--bc-shadow-lg)}
+.case-thumb{width:100%;height:170px;overflow:hidden;background:var(--bc-dark);position:relative}
+.case-thumb img{width:100%;height:100%;object-fit:cover}
+.case-body{padding:22px;flex:1}
+.case-body .sector{font-size:10.5px;font-weight:700;color:var(--bc-blue);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.case-body h4{font-size:15px;font-weight:700;color:var(--bc-dark);margin-bottom:8px}
+.case-body p{font-size:13px;color:var(--bc-gray-600);line-height:1.55}
+.case-body .read-more{margin-top:12px;font-size:12px;font-weight:600;color:var(--bc-blue)}
+.footer{text-align:center;padding:48px 32px;font-size:12px;color:var(--bc-gray-400)}
+
+@media(max-width:800px){
+  .nav-links{display:none}
+  .hero{padding:120px 20px 60px}
+  .section{padding:48px 20px}
+  .grid-4,.grid-3,.grid-2{grid-template-columns:1fr}
+  .contact-section{flex-direction:column;text-align:center;padding:36px 20px}
+  .feature-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <div class="nav-logo"><img src="https://www.martinport.com/wp-content/uploads/2022/05/bigchange-logo.webp" alt="BigChange"/></div>
+    <div class="nav-links">
+      <a href="#summary">Why BigChange</a>
+      <a href="#systems">One Place</a>
+      <a href="#features">Features</a>
+      <a href="#implementation">Implementation</a>
+      <a href="#cases">Case Studies</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#next">Next Steps</a>
+      <a href="https://landing.bigchange.com/1JMwor5SRT" target="_blank">Your Quote</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-grid"></div><div class="hero-orb hero-orb-1"></div><div class="hero-orb hero-orb-2"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Proposal · Ashbourne &amp; Vale Group</div>
+    <h1>Never lose a job to a spreadsheet again.<br><span>Every quote, every extra, every engineer in one place.</span></h1>
+    <p>George, you told us small works are growing faster than the admin around them, and that £44,000 of work has already slipped away because follow-on quotes were never chased. BigChange puts every enquiry, quote, job and engineer in one system, flags further works automatically so nothing is missed, and gets your team live fast.</p>
+    <div class="hero-stat-row">
+      <div class="hero-stat"><div class="num"><em>£44k</em></div><div class="lbl">Of work already lost to missed follow-ups</div></div>
+      <div class="hero-stat"><div class="num"><em>£0</em></div><div class="lbl">Upfront cost, vehicle tracking and install</div></div>
+      <div class="hero-stat"><div class="num"><em>24hrs</em></div><div class="lbl">To your logins</div></div>
+    </div>
+  </div>
+</header>
+
+<section class="section" id="summary">
+  <div class="reveal">
+    <div class="section-tag">Why BigChange</div>
+    <h2>Stop the leak. Win the contracts. Free up your time.</h2>
+    <p class="subtitle">Small works are a big part of your income, but they run from a spreadsheet and messages between the office and the lads. BigChange gives your admin team one place to log, quote, schedule and chase every job, so you and Aaron can stay focused on the bigger work.</p>
+  </div>
+  <div class="grid-4">
+    <div class="card reveal">
+      <div class="card-icon">💷</div>
+      <h3>Further works never missed</h3>
+      <p>If an engineer finds more work on site, they tick it on their tablet. The office is alerted, the job is flagged, and the quote goes out. The re-roof, the boiler extras and the groundworks stop slipping away.</p>
+    </div>
+    <div class="card reveal">
+      <div class="card-icon">🗂️</div>
+      <h3>One place for every job</h3>
+      <p>Letting agents, landlords and private customers, each with their own sites and job history. Everything you need is in one view, across every arm of the group.</p>
+    </div>
+    <div class="card reveal">
+      <div class="card-icon">🧾</div>
+      <h3>Quote to cash, with Xero</h3>
+      <p>Build quotes from price lists, send them with an online accept link, turn them into jobs in a click, and invoice. Xero syncs both ways, so paid invoices update in BigChange.</p>
+    </div>
+    <div class="card reveal">
+      <div class="card-icon">📅</div>
+      <h3>Dispatch in seconds</h3>
+      <p>A reactive job comes in and the scheduling assistant recommends who to send by skills, availability, distance and cost, instead of texting around.</p>
+    </div>
+    <div class="card reveal">
+      <div class="card-icon">📲</div>
+      <h3>Customers kept informed</h3>
+      <p>Booking confirmations, on-the-way ETAs, a photo of the engineer and a live tracking link, all branded as you. Fewer "where is he?" calls, and a better story when you tender.</p>
+    </div>
+    <div class="card reveal">
+      <div class="card-icon">📸</div>
+      <h3>Proof on every job</h3>
+      <p>Time, date and location-stamped photos, risk assessments, and customer sign-off, so any query from a letting agent or tenant is settled in seconds.</p>
+    </div>
+    <div class="card reveal">
+      <div class="card-icon">📡</div>
+      <h3>Vehicle tracking — free</h3>
+      <p>Native hardwired tracking is included, with installation free, when your current contract allows. We can install alongside and switch when it ends.</p>
+    </div>
+    <div class="card reveal">
+      <div class="card-icon">🇬🇧</div>
+      <h3>Leeds-based, 24/7 support</h3>
+      <p>Implementation, account management and 24/7 UK support, all in Leeds. Engineers can call us straight from the app. Backed by Simpro Group.</p>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bc-white);padding:0;">
+  <div class="section" id="systems">
+    <div class="reveal">
+      <div class="section-tag">One Place</div>
+      <h2>Spreadsheet, WhatsApp, phone calls and paper checks, replaced by one system.</h2>
+      <p class="subtitle">Xero stays exactly as it is. BigChange connects to it and takes over the manual work around it.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch;" class="reveal">
+      <div class="system-card2"><div class="s-pill s-pill-replace">Replaced</div><div class="s-title">Job spreadsheet</div><p>Enquiries, quotes and jobs live in one system with an owner, a status and a flag when follow-up is due.</p></div>
+      <div class="system-card2"><div class="s-pill s-pill-replace">Replaced</div><div class="s-title">WhatsApp and phone calls to engineers</div><p>Jobs go straight to the engineer's device with set replies and messaging, and the diary updates live.</p></div>
+      <div class="system-card2"><div class="s-pill s-pill-replace">Replaced</div><div class="s-title">Paper vehicle checks and fleet sheets</div><p>Forced checks with photos in the app, plus MOT, tax and service alerts per vehicle.</p></div>
+      <div class="system-in" style="grid-column:span 3;"><div class="s-label">✓ Connected, not replaced — Xero</div><p>Two-way sync: invoices go to Xero, and payments flow back so BigChange shows what is paid. Open APIs are free up to 100,000 calls if your team wants to build more.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="features">
+  <div class="reveal">
+    <div class="section-tag">The Detail</div>
+    <h2>What we walked through on the demo.</h2>
+    <p class="subtitle">Rolled out in phases: your quick wins first, the extras later.</p>
+  </div>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;" class="reveal">
+    <button class="ftab active" onclick="showTab('t-q',this)">💷 Quotes & Further Works</button>
+    <button class="ftab" onclick="showTab('t-crm',this)">🗂️ Customers & Sites</button>
+    <button class="ftab" onclick="showTab('t-plan',this)">📅 Scheduling & Alerts</button>
+    <button class="ftab" onclick="showTab('t-app',this)">📱 Engineer App</button>
+    <button class="ftab" onclick="showTab('t-fleet',this)">🚐 Fleet & Stock</button>
+  </div>
+
+  <div id="t-q" class="feature-panel reveal">
+    <div style="font-size:14px;font-weight:700;color:var(--bc-dark);margin-bottom:16px;">Quotes & Further Works — chase every pound</div>
+    <div class="feature-grid">
+      <div class="check"><span class="tick">✓</span><span>Quotes from free text or price lists and sets, e.g. a boiler install pulls through every part, cost and margin</span></div>
+      <div class="check"><span class="tick">✓</span><span>Margin and discount controls by percentage or fixed price, with agreed rates per letting agent</span></div>
+      <div class="check"><span class="tick">✓</span><span>Branded Word quote templates, emailed from the system with an online accept link and your terms</span></div>
+      <div class="check"><span class="tick">✓</span><span>Accepted quote becomes a job in a click, with line items and customer details carried across</span></div>
+      <div class="check"><span class="tick">✓</span><span>Engineer ticks "further works required" on the tablet: the office is emailed and alerted instantly</span></div>
+      <div class="check"><span class="tick">✓</span><span>A flag goes on the job, and a favourites view lists every further-works job still to quote</span></div>
+      <div class="check"><span class="tick">✓</span><span>Quote disappears from the list once sent, with automation on the back of it</span></div>
+      <div class="check"><span class="tick">✓</span><span>Invoice straight from the job, synced to Xero</span></div>
+    </div>
+  </div>
+
+  <div id="t-crm" class="feature-panel reveal" style="display:none;">
+    <div style="font-size:14px;font-weight:700;color:var(--bc-dark);margin-bottom:16px;">Customers & Sites — letting agents, landlords, private clients</div>
+    <div class="feature-grid">
+      <div class="check"><span class="tick">✓</span><span>Parent and child structure: the letting agent as parent, every property beneath it</span></div>
+      <div class="check"><span class="tick">✓</span><span>Job history by site or across the whole letting agent</span></div>
+      <div class="check"><span class="tick">✓</span><span>Extra info flagged on the engineer device each visit — access, vulnerable tenants, knock loud</span></div>
+      <div class="check"><span class="tick">✓</span><span>Full audit trail: notes with reminders, tagged colleagues, attachments, drawings and photos</span></div>
+      <div class="check"><span class="tick">✓</span><span>Customisable groups for agents, landlords, suppliers and direct customers</span></div>
+      <div class="check"><span class="tick">✓</span><span>Client portal for future tenders: request work, see upcoming jobs, view reports and pay invoices</span></div>
+      <div class="check"><span class="tick">✓</span><span>Gas, electrical and roofing job types and worksheets built in, including gas safety packs</span></div>
+      <div class="check"><span class="tick">✓</span><span>Dynamic search by postcode, name or reference</span></div>
+    </div>
+  </div>
+
+  <div id="t-plan" class="feature-panel reveal" style="display:none;">
+    <div style="font-size:14px;font-weight:700;color:var(--bc-dark);margin-bottom:16px;">Scheduling & Alerts — fast, accurate, automated</div>
+    <div class="feature-grid">
+      <div class="check"><span class="tick">✓</span><span>Daily, weekly and monthly diary, colour-coded live by job status</span></div>
+      <div class="check"><span class="tick">✓</span><span>Drag and drop jobs between engineers, who are notified of changes</span></div>
+      <div class="check"><span class="tick">✓</span><span>AI scheduling assistant recommends who to send by skills, availability, distance and cost</span></div>
+      <div class="check"><span class="tick">✓</span><span>Skills matrix with expiry alerts, and warnings if a job is booked to someone without the skill</span></div>
+      <div class="check"><span class="tick">✓</span><span>Unscheduled job buckets by type, e.g. reactive, gas or electrical</span></div>
+      <div class="check"><span class="tick">✓</span><span>Out-of-hours rates held per engineer, with job costs calculated automatically</span></div>
+      <div class="check"><span class="tick">✓</span><span>Automatic booking confirmation, on-the-way ETA with engineer photo, and tracking link by text or email</span></div>
+      <div class="check"><span class="tick">✓</span><span>Dashboard for directors: late jobs, capacity, completion rate and month-on-month trend</span></div>
+    </div>
+  </div>
+
+  <div id="t-app" class="feature-panel reveal" style="display:none;">
+    <div style="font-size:14px;font-weight:700;color:var(--bc-dark);margin-bottom:16px;">Engineer App — simple, even offline</div>
+    <div class="feature-grid">
+      <div class="check"><span class="tick">✓</span><span>Works fully offline on iOS and Android, so they can keep using the tablets and phones they have today</span></div>
+      <div class="check"><span class="tick">✓</span><span>Mandatory workflow: risk assessment first, then job sheet, photos and description before they can close the job</span></div>
+      <div class="check"><span class="tick">✓</span><span>Time, date and location-stamped photos that engineers can annotate</span></div>
+      <div class="check"><span class="tick">✓</span><span>Speech-to-text and an AI "improve" button that turns notes into a customer-ready description</span></div>
+      <div class="check"><span class="tick">✓</span><span>AI job-ready summary of previous visits before arrival</span></div>
+      <div class="check"><span class="tick">✓</span><span>Built-in sat nav via Google Maps or Waze, and what3words</span></div>
+      <div class="check"><span class="tick">✓</span><span>Messaging with set replies, to replace WhatsApp for job chat</span></div>
+      <div class="check"><span class="tick">✓</span><span>Help button that calls our Leeds support team direct</span></div>
+    </div>
+  </div>
+
+  <div id="t-fleet" class="feature-panel reveal" style="display:none;">
+    <div style="font-size:14px;font-weight:700;color:var(--bc-dark);margin-bottom:16px;">Fleet & Stock — ready when you are</div>
+    <div class="feature-grid">
+      <div class="check"><span class="tick">✓</span><span>Vehicle profiles with MOT, tax and service dates and alerts</span></div>
+      <div class="check"><span class="tick">✓</span><span>Vehicle checks done in the app, with photo evidence of defects</span></div>
+      <div class="check"><span class="tick">✓</span><span>Van stock with reorder thresholds and alerts to the office</span></div>
+      <div class="check"><span class="tick">✓</span><span>Equipment and asset tracking for tools or customer sites</span></div>
+      <div class="check"><span class="tick">✓</span><span>Light-touch HR: holiday requests approved in the app and blocked on the diary</span></div>
+      <div class="check"><span class="tick">✓</span><span>Native tracking free when your current contract ends, and installation included</span></div>
+      <div class="check"><span class="tick">✓</span><span>Expenses and absences per engineer</span></div>
+      <div class="check"><span class="tick">✓</span><span>Reports and exports from any table</span></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bc-white);padding:0;">
+  <div class="section">
+    <div class="reveal"><div class="section-tag">The Real Difference</div><h2>Same lads. No more lost follow-ups.</h2></div>
+    <div class="grid-2 reveal">
+      <div class="ba-card ba-bad"><div class="ba-tag">❌ Today</div>
+        <p>Jobs and quotes tracked on a spreadsheet, with no owner and no chase.</p>
+        <p>Further works noted, then forgotten, and £44,000 gone to competitors.</p>
+        <p>Engineers sent by text, phone and WhatsApp.</p>
+        <p>No single view of what job, which arm and what stage.</p>
+        <p>Tenants and agents ringing to ask where the engineer is.</p></div>
+      <div class="ba-card ba-good"><div class="ba-tag">✓ BigChange</div>
+        <p>Every enquiry, quote and job in one place, each with an owner and status.</p>
+        <p>Further works flagged on the tablet, alerting the office to quote.</p>
+        <p>Scheduling assistant recommends the right engineer in seconds.</p>
+        <p>Director dashboard across every arm of the group.</p>
+        <p>Automatic confirmations, ETAs and tracking links.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="implementation">
+  <div class="reveal">
+    <div class="section-tag">Implementation & Support</div>
+    <h2>Live fast, without taking you away from the business.</h2>
+    <p class="subtitle">Logins within 24 hours, a phased rollout with your biggest problems first, and full implementation in up to 90 days. We know your time is tight, so sessions are split to suit you, online or in person.</p>
+  </div>
+  <div style="background:linear-gradient(135deg,var(--bc-dark),#0d2952);border-radius:var(--bc-radius);padding:36px;display:flex;align-items:start;gap:28px;" class="reveal">
+    <div style="flex-shrink:0;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--bc-blue),var(--bc-green));display:flex;align-items:center;justify-content:center;font-size:24px;">⭐</div>
+    <div style="flex:1;">
+      <div style="font-size:11px;font-weight:700;color:var(--bc-green);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;">Premier Support · £133/month</div>
+      <div style="font-family:'DM Serif Display',serif;font-size:22px;color:#fff;margin-bottom:16px;">A dedicated team to get you live and keep you there — with no upfront cost.</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;">
+        <div style="font-size:13px;color:rgba(255,255,255,.7);">✓ 24 hours of onboarding across 10 sessions, split however suits you</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.7);">✓ One dedicated implementation consultant throughout</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.7);">✓ An assigned implementor and milestones</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.7);">✓ A Leeds-based account manager after sign-off</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.7);">✓ 24/7 UK-based support, from the app or by phone</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.7);">✓ BigChange University e-learning for new starters</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.7);">✓ Job types, worksheets and workflows built with you</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.7);">✓ Xero integration set up</div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- CASE STUDIES -->
+<section class="section" id="cases">
+  <div class="reveal">
+    <div class="section-tag">In Good Company</div>
+    <h2>Businesses making the same move, in your world.</h2>
+    <p class="subtitle">UK service businesses running reactive, planned and remedial work from one system, much like the one you are building.</p>
+  </div>
+  <div class="case-grid">
+    <a href="https://www.youtube.com/watch?v=ZbH-FsGWAhc" target="_blank" rel="noreferrer" class="case-card reveal">
+      <div class="case-thumb" style="position:relative;">
+        <img src="https://img.youtube.com/vi/ZbH-FsGWAhc/maxresdefault.jpg" alt="Nirvana Maintenance" style="width:100%;height:100%;object-fit:cover;"/>
+        <div style="position:absolute;inset:0;background:rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center;"><div style="width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.95);display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-left:15px solid #0A2240;border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:4px;"></div></div></div>
+        <div style="position:absolute;top:10px;right:10px;background:rgba(220,0,0,.9);color:#fff;padding:3px 8px;border-radius:4px;font-size:10px;font-weight:700;">▶ Watch</div>
+      </div>
+      <div class="case-body">
+        <div class="sector">Property Maintenance · Switched to BigChange · 400% Growth</div>
+        <h4>Nirvana Maintenance — 400% growth ▶</h4>
+        <p>Property maintenance business that was exactly where you are now — looking for a system that could be tailored to how they work. Chose BigChange. 400% growth in turnover, 650% more jobs completed. MD Darren Waitson talks through the transition.</p>
+        <div class="read-more">Watch their story →</div>
+      </div>
+    </a>
+
+    <a href="https://www.youtube.com/watch?v=VtWMHspNUXg" target="_blank" rel="noreferrer" class="case-card reveal">
+      <div class="case-thumb" style="position:relative;">
+        <img src="https://img.youtube.com/vi/VtWMHspNUXg/maxresdefault.jpg" alt="Pinnacle Group" style="width:100%;height:100%;object-fit:cover;"/>
+        <div style="position:absolute;inset:0;background:rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center;"><div style="width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.95);display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-left:15px solid #0A2240;border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:4px;"></div></div></div>
+        <div style="position:absolute;top:10px;right:10px;background:rgba(220,0,0,.9);color:#fff;padding:3px 8px;border-radius:4px;font-size:10px;font-weight:700;">▶ Watch</div>
+      </div>
+      <div class="case-body">
+        <div class="sector">Facilities Management · National · Reactive & Planned · Multi-site</div>
+        <h4>Pinnacle Group — national FM, reactive and planned in one system</h4>
+        <p>National FM business running the same reactive/planned split you do, across housing, schools and retail schemes. Since BigChange: real-time reporting, productivity gains, reduced costs and higher client satisfaction — feeding directly into contract extensions and new contract wins.</p>
+        <div class="read-more">Watch their story →</div>
+      </div>
+    </a>
+
+    <a href="https://www.bigchange.com/success-stories/gem-introduces-bigchanges-for-public-sector-contract-reporting" target="_blank" rel="noreferrer" class="case-card reveal">
+      <div class="case-thumb" style="position:relative;">
+        <img src="https://cdn.prod.website-files.com/652e90c1583f67a8de233f2d/668ec5689f15ba5e89a06ab5_1200_bigchange_gem_03409.avif" alt="GEM Environmental" style="width:100%;height:100%;object-fit:cover;"/>
+        <div style="position:absolute;top:10px;right:10px;background:rgba(0,114,206,.9);color:#fff;padding:3px 8px;border-radius:4px;font-size:10px;font-weight:700;">Read</div>
+      </div>
+      <div class="case-body">
+        <div class="sector">FM · Compliance · Client Portal · Audit Reporting</div>
+        <h4>GEM Environmental — compliance and client reporting done right</h4>
+        <p>Environmental services business using BigChange for compliance-driven contracts, with full client portal reporting — directly comparable to the customer-journey audit trail you're required to maintain for your insurers. "BigChange gives us a proven track record with well-documented evidence."</p>
+        <div class="read-more">Read their story →</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+
+<section class="section" id="pricing">
+  <div class="reveal">
+    <div class="section-tag">Pricing</div>
+    <h2>£522.60 a month. No upfront cost.</h2>
+    <p class="subtitle">Our usual price is £99.94 per user, which includes everything you have seen plus vehicle tracking and installation. Because you are looking to decide this week and it is our financial year-end, your engineers are £59.95 each, your part-time office users are half price, and the £125 a month Xero integration is waived.</p>
+  </div>
+  <div class="grid-2 reveal" style="max-width:960px;">
+    <div class="price-box-dark">
+      <div style="font-size:10.5px;font-weight:700;color:var(--bc-green);text-transform:uppercase;letter-spacing:.08em;margin-bottom:20px;">Included</div>
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div style="display:flex;align-items:start;gap:12px;"><span style="color:var(--bc-green);font-size:16px;flex-shrink:0;line-height:1.3;">✓</span><div><div style="font-size:13px;font-weight:700;color:#fff;">Vehicle tracking and installation</div><div style="font-size:12px;color:rgba(255,255,255,.45);margin-top:3px;">Add it now, or switch when your current contract ends</div></div></div>
+        <div style="display:flex;align-items:start;gap:12px;"><span style="color:var(--bc-green);font-size:16px;flex-shrink:0;line-height:1.3;">✓</span><div><div style="font-size:13px;font-weight:700;color:#fff;">Xero two-way integration — normally £125 a month, waived</div><div style="font-size:12px;color:rgba(255,255,255,.45);margin-top:3px;">When you proceed this month</div></div></div>
+        <div style="display:flex;align-items:start;gap:12px;"><span style="color:var(--bc-green);font-size:16px;flex-shrink:0;line-height:1.3;">✓</span><div><div style="font-size:13px;font-weight:700;color:#fff;">Subcontractors on a free licence</div><div style="font-size:12px;color:rgba(255,255,255,.45);margin-top:3px;">£1 per job, billed in arrears — upgrade only if it pays</div></div></div>
+        <div style="display:flex;align-items:start;gap:12px;"><span style="color:var(--bc-green);font-size:16px;flex-shrink:0;line-height:1.3;">✓</span><div><div style="font-size:13px;font-weight:700;color:#fff;">No upfront cost</div><div style="font-size:12px;color:rgba(255,255,255,.45);margin-top:3px;">Pay monthly, with no implementation fee</div></div></div>
+        <div style="display:flex;align-items:start;gap:12px;"><span style="color:var(--bc-green);font-size:16px;flex-shrink:0;line-height:1.3;">✓</span><div><div style="font-size:13px;font-weight:700;color:#fff;">Open APIs and partner network</div><div style="font-size:12px;color:rgba(255,255,255,.45);margin-top:3px;">Free up to 100,000 calls</div></div></div>
+      </div>
+    </div>
+    <div class="price-box-main">
+      <div style="padding:16px 24px;background:linear-gradient(135deg,var(--bc-dark),#0d2952);">
+        <div style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--bc-green);">Ashbourne &amp; Vale Group</div>
+        <div style="font-size:13px;font-weight:600;color:#fff;margin-top:2px;">How your users are priced</div>
+      </div>
+      <div style="padding:14px 22px;border-bottom:1px solid var(--bc-gray-100);display:flex;justify-content:space-between;align-items:center;">
+        <div><div style="font-size:13px;font-weight:600;color:var(--bc-dark);">3 directly employed field engineers</div><div style="font-size:11px;color:var(--bc-gray-400);">Usually £99.94 per user</div></div>
+        <div style="text-align:right;"><div style="font-size:13px;font-weight:700;color:var(--bc-blue);">£59.95 each</div></div>
+      </div>
+      <div style="padding:14px 22px;border-bottom:1px solid var(--bc-gray-100);display:flex;justify-content:space-between;align-items:center;">
+        <div><div style="font-size:13px;font-weight:600;color:var(--bc-dark);">George and Aaron — dual users (office and field)</div><div style="font-size:11px;color:var(--bc-gray-400);">Usually £99.94 per user. One user covers both office and field</div></div>
+        <div style="text-align:right;"><div style="font-size:13px;font-weight:700;color:var(--bc-blue);">£59.95 each</div></div>
+      </div>
+      <div style="padding:14px 22px;border-bottom:1px solid var(--bc-gray-100);display:flex;justify-content:space-between;align-items:center;">
+        <div><div style="font-size:13px;font-weight:600;color:var(--bc-dark);">3 part-time office users (1, 2 and 3 days a week)</div><div style="font-size:11px;color:var(--bc-gray-400);">Half price for part-time use, each with their own login. Usually £99.94 per user</div></div>
+        <div style="text-align:right;"><div style="font-size:13px;font-weight:700;color:var(--bc-blue);">£29.95 each</div></div>
+      </div>
+      <div style="padding:14px 22px;border-bottom:1px solid var(--bc-gray-100);display:flex;justify-content:space-between;align-items:center;">
+        <div><div style="font-size:13px;font-weight:600;color:var(--bc-dark);">Subcontractors (2)</div><div style="font-size:11px;color:var(--bc-gray-400);">£1 per job, billed in arrears</div></div>
+        <div style="text-align:right;"><div style="font-size:13px;font-weight:700;color:var(--bc-blue);">Free licence</div></div>
+      </div>
+      <div style="padding:14px 22px;border-bottom:1px solid var(--bc-gray-100);display:flex;justify-content:space-between;align-items:center;">
+        <div><div style="font-size:13px;font-weight:600;color:var(--bc-dark);">Premier Support package</div><div style="font-size:11px;color:var(--bc-gray-400);">10 sessions · 24 hours onboarding · dedicated consultant · 24/7 support</div></div>
+        <div style="text-align:right;"><div style="font-size:13px;font-weight:700;color:var(--bc-blue);">£133/month</div></div>
+      </div>
+      <div style="padding:10px 22px;background:rgba(40,226,137,.03);border-bottom:1px solid rgba(40,226,137,.1);display:flex;justify-content:space-between;align-items:center;">
+        <div style="font-size:12px;color:var(--bc-gray-600);">Xero integration (usually £125/mo)</div>
+        <span style="background:rgba(40,226,137,.1);color:#1a8a5a;font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;">WAIVED</span>
+      </div>
+      <div style="padding:10px 22px;background:rgba(40,226,137,.03);border-bottom:1px solid rgba(40,226,137,.1);display:flex;justify-content:space-between;align-items:center;">
+        <div style="font-size:12px;color:var(--bc-gray-600);">Upfront cost</div>
+        <span style="background:rgba(40,226,137,.1);color:#1a8a5a;font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;">£0</span>
+      </div>
+      <div style="padding:24px;text-align:center;background:linear-gradient(135deg,var(--bc-dark),#0d2952);">
+        <div style="font-size:11px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;">Monthly total (exc. VAT)</div>
+        <div style="font-family:'DM Serif Display',serif;font-size:52px;color:var(--bc-green);line-height:1;">£522.60/mo</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.35);margin-top:4px;">5 users × £59.95 + 3 office users × £29.95 + £133 Premier Support</div>
+      </div>
+      <div style="padding:20px 24px;background:rgba(40,226,137,.08);border-top:1px solid rgba(40,226,137,.2);">
+        <div style="font-size:11px;font-weight:700;color:#1a8a5a;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;text-align:center;">You save</div>
+        <div style="text-align:center;font-size:18px;font-weight:700;color:#1a8a5a;">£534.92 a month · £6,419.04 a year</div>
+      </div>
+            <div style="padding:22px 24px;background:#fff7ed;border-top:3px solid #f97316;">
+        <div style="font-size:12px;font-weight:800;color:#c2410c;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;">⏳ This price is only available if you sign by 31 October</div>
+        <div style="font-size:14px;color:#7c2d12;line-height:1.65;">It is built on our financial year-end. After 31 October the offer ends and our usual pricing applies: £99.94 per user, £125 a month for the Xero integration, and no half-price part-time users.</div>
+      </div>
+      <div style="padding:18px 24px;background:#fff;text-align:center;border-top:1px solid var(--bc-gray-100);">
+        <a href="https://landing.bigchange.com/1JMwor5SRT" target="_blank" style="display:inline-block;background:var(--bc-blue);color:#fff;font-weight:700;font-size:14px;padding:12px 24px;border-radius:8px;text-decoration:none;">View your formal quote →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bc-white);padding:0;">
+  <div class="section" id="next">
+    <div class="reveal"><div class="section-tag">Next Steps</div><h2>Two steps, and you are live.</h2>
+      <p class="subtitle">George — you need this yesterday. Here is how we get there before the weekend.</p></div>
+    <div class="reveal" style="margin-bottom:40px;display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:900px;">
+      <div class="step-card active-step"><div class="step-num">This week</div><div class="step-title">Review your quote</div><div class="step-body">Your formal quote is ready, with Xero waived and no upfront cost. This pricing is only available if you sign by 31 October. <a href="https://landing.bigchange.com/1JMwor5SRT" target="_blank" style="color:var(--bc-blue);font-weight:700;">View your quote →</a></div></div>
+      <div class="step-card"><div class="step-num">Thursday 15 October, 2:30pm</div><div class="step-title">Quick call and sign-off</div><div class="step-body">A short call to confirm the quote. Sign this week and your logins are with you within 24 hours.</div></div>
+    </div>
+    <div class="contact-section reveal"><div class="contact-avatar">MF</div><div>
+      <h3 style="font-size:20px;font-weight:700;margin-bottom:4px;">Matthew Fryer</h3>
+      <div style="font-size:13px;color:var(--bc-green);font-weight:600;margin-bottom:14px;">Account Executive — BigChange</div>
+      <div style="display:flex;gap:28px;flex-wrap:wrap;">
+        <span style="font-size:13px;color:rgba(255,255,255,.75);">📧 <a href="mailto:matthew.fryer@bigchange.com" style="color:rgba(255,255,255,.75);text-decoration:none;">matthew.fryer@bigchange.com</a></span>
+        <span style="font-size:13px;color:rgba(255,255,255,.75);">📞 <a href="tel:+447951081056" style="color:rgba(255,255,255,.75);text-decoration:none;">07951 081 056</a></span>
+      </div></div></div>
+  </div>
+</section>
+
+<div class="footer">
+  <img src="https://www.martinport.com/wp-content/uploads/2022/05/bigchange-logo.webp" alt="BigChange" style="height:22px;opacity:.35;margin-bottom:14px;display:block;margin-left:auto;margin-right:auto;"/>
+  This proposal was prepared exclusively for Ashbourne &amp; Vale Group. Confidential.
+</div>
+
+<script>
+function showTab(id,btn){
+  document.querySelectorAll('.feature-panel').forEach(p=>p.style.display='none');
+  document.querySelectorAll('.ftab').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).style.display='block';btn.classList.add('active');
+}
+const obs=new IntersectionObserver(e=>{e.forEach((e,i)=>{e.isIntersecting&&(setTimeout(()=>e.target.classList.add('visible'),i*80),obs.unobserve(e.target))})},{threshold:.05});
+document.querySelectorAll('.reveal').forEach(e=>obs.observe(e));
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>20)});
+</script>
+</body>
+</html>
